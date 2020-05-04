@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>YT Basic DIY PC Video Playlist</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body onload="onload();">
+
+
+
+    <video id="idle_video" "width="320" height="240" controls="controls" onended="onVideoEnded();"></video>
+    <script>
+        var vid_list      = [
+
+                                "http://atomantapps.com.au/shmine/1234.webm",
+                                "http://atomantapps.com.au/shmine/123.mp4",
+                                "https://archive.org/download/gulliverstravels1939/gulliverstravels1939_512kb.mp4"
+
+                            ];
+        var vid_index     = 0;
+        var vid_player    = null;
+
+        function onload(){
+            console.log("body loaded");
+            vid_player        = document.getElementById("idle_video");
+            vid_player.setAttribute("src", vid_list[vid_index]);
+            vid_player.play();
+        }
+
+        function onVideoEnded(){
+            console.log("video ended");
+            if(vid_index < vid_list.length - 1){
+                vid_index++;
+            }
+            else{
+                vid_index = 0;
+            }
+            vid_player.setAttribute("src", vid_list[vid_index]);
+            vid_player.play();
+        }
+    </script>
+</body>
